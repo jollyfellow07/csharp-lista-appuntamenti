@@ -38,6 +38,7 @@ namespace ListaAppuntamenti
         }
      public DateTime cambioAppuntamnto()
         {
+            Console.Write("Inserisci la nuova data per l'appuntamento: ");
             DateTime cambioDellAppuntamento = DateTime.Parse(Console.ReadLine());
             this.dataEOraAppuntamento = cambioDellAppuntamento;
             try
@@ -50,7 +51,11 @@ namespace ListaAppuntamenti
             }
             return dataEOraAppuntamento;
         }
-
+        public DateTime GetAppuntamento()
+        {
+            Console.Write("Il tuo appuntamento è fissato per il giorno: ");
+            return dataEOraAppuntamento;
+        }
         public string GetNome()
         {
             return nome;
