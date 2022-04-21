@@ -39,6 +39,8 @@ namespace ListaAppuntamenti
                 throw new ArgumentOutOfRangeException("dataEOraAppuntamento", "non puo essere una data del passato ");
             }
         }
+
+        
      public DateTime cambioAppuntamento()
         {
             do
@@ -66,7 +68,7 @@ namespace ListaAppuntamenti
             string rappresentazioneInStringa = "";
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             rappresentazioneInStringa += "\n**************Appuntamento***************\n";
-            rappresentazioneInStringa += "Il nome dell'appuntamento è: " + GetNome() + "\n";
+            rappresentazioneInStringa += "Il nome della persona con cui l'appuntamento è: " + GetNome() + "\n";
             rappresentazioneInStringa += "l'appuntamento è fissato per il giorno: " + GetAppuntamento() + "\n";
             rappresentazioneInStringa += "Il luogo dell'appuntamento è: " + GetLuogo() + "\n";
             rappresentazioneInStringa += "**************************************" + "\n";
@@ -80,15 +82,15 @@ namespace ListaAppuntamenti
             
             return dataEOraAppuntamento;
         }
-        public string GetNome()
+        public string? GetNome()
         {
             return nome;
         }
-        public string GetLocalitaAppuntamento()
+        public string? GetLocalitaAppuntamento()
         {
             return localitaAppuntamento;
         }
-        public string GetLuogo()
+        public string? GetLuogo()
         {
             return localitaAppuntamento;
         }

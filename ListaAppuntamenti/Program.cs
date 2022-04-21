@@ -13,8 +13,11 @@ Console.WriteLine(dottore.GetAppuntamento());
 Console.WriteLine("Quanti appuntamenti vuoi prendere?");
 int numeroAppuntamenti = int.Parse(Console.ReadLine());
 
+
 List<Appuntamento> listaDiAppuntamenti = new List<Appuntamento>();
-for(int i = 0; i < numeroAppuntamenti; i++)
+if (numeroAppuntamenti > 0)
+{
+    for (int i = 0; i < numeroAppuntamenti; i++)
 {
 
     Console.WriteLine("inserisci l'appuntamento numero " + (i+1));
@@ -38,9 +41,13 @@ for(int i = 0; i < numeroAppuntamenti; i++)
     listaDiAppuntamenti.Add(new Appuntamento(nomeAppuntamento, dataPerAppuntamento, luogoAppuntamento));
 
 }
+}
 listaDiAppuntamenti.Add(dottore);
 
 foreach(Appuntamento appuntamenti in listaDiAppuntamenti)
 {
     Console.WriteLine(appuntamenti.ToString());
 }
+Appuntamento.ReferenceEquals(listaDiAppuntamenti, new List<Appuntamento>());
+
+
