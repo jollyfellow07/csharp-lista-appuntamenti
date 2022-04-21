@@ -18,7 +18,19 @@ namespace ListaAppuntamenti
             this.nome = nome;
             this.localitaAppuntamento = localitaAppuntamento;
             this.dataEOraAppuntamento = dataEOraAppuntamento;
+            //Eccezione lanciata se l'appuntamento è fissato per una data del passato
+            try
+            {
+                ComparazioneDelleDate();
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine("Mi dispiace ma " + e.ParamName + " ha detto " + e.Message);
+            }
 
+        }
+        public void ComparazioneDelleDate()
+        {
             if (dataEOraAppuntamento < dataEOraAttuale)
             {
                 throw new ArgumentOutOfRangeException("dataEOraAppuntamento", "non puo essere una data del passato ");
@@ -28,12 +40,17 @@ namespace ListaAppuntamenti
         {
             DateTime cambioDellAppuntamento = DateTime.Parse(Console.ReadLine());
             this.dataEOraAppuntamento = cambioDellAppuntamento;
-            if (dataEOraAppuntamento < dataEOraAttuale)
+            try
             {
-                throw new ArgumentOutOfRangeException("dataEOraAppuntamento", "Non puo essere una data del passato ");
+                ComparazioneDelleDate();
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine("Mi dispiace ma " + e.ParamName + " ha detto " + e.Message);
             }
             return dataEOraAppuntamento;
         }
+
         public string GetNome()
         {
             return nome;
