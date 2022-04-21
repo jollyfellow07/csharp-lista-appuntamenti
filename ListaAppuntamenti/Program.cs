@@ -59,47 +59,44 @@ string? risposta = Console.ReadLine();
 
     switch(risposta){
         case "si":
-            int numeroAppuntamento = 0;
-        
-
-            foreach (Appuntamento appuntamenti in listaDiAppuntamenti)
-            {
-                Console.WriteLine("Appuntamento numero " + numeroAppuntamento++);
-                Console.WriteLine(appuntamenti.ToString());
-            }
-            Console.WriteLine("che appuntamento vuoi modificare?");
-
+            Console.WriteLine("iNSERISCI IL NOME DELL'APPUNTAMENTO CHE VUOI MODIFICARE");
+            string nomeAppuntamento = "";
             //inserisco eccezione per valore non corretto su console.Readline
             try
             {
 
-                numeroAppuntamento = int.Parse(Console.ReadLine());
+                nomeAppuntamento = Console.ReadLine();
             }
             catch (Exception)
             {
                 Console.WriteLine("mi dispiace hai inserito un input non corretto");
-            }
+                
 
-            //Per evitare che mi crashi il programma dopo l'inserimento di un valore che sia out of range inserisco l'eccezione
-            try
-            {
-                listaDiAppuntamenti[numeroAppuntamento].cambioAppuntamento();
             }
-            catch (Exception)
+            /**************************BONUS****************************/
+
+            int numberIndex = listaDiAppuntamenti.FindIndex(x => x.GetNome() == nomeAppuntamento); //PRENDO L'INDEX DELL'APPUNTAMENTO CONFRONTANDO IL NOME
+            if(numberIndex == -1)
             {
-                Console.WriteLine("mi dispiace hai inserito un input non corretto");
+                Console.WriteLine("mi dispiace ma il nome dell'appuntamento non esiste");
+                condizione = false;
+                break;
             }
-        
+            Console.WriteLine("NOME APPUNTAMENTO TROVATO! INSERISCI LA NUOVA DATA DA INSERIRE");
+            listaDiAppuntamenti[numberIndex].cambioAppuntamento();
             Console.Clear();
+
             Console.WriteLine("Appuntamento aggiornato.\n Ecco la nuova lista: ");
+
+            /* STAMPO LISTA AGGIORNATA FINALE*/
             foreach (Appuntamento appuntamenti in listaDiAppuntamenti)
             {
                 Console.WriteLine(appuntamenti.ToString());
             }
-
+            /*************************FINE*BONUS****************************/
             condizione = false;
             break;
-
+           
         case "no":
             Console.WriteLine("Buona giornata!");
             condizione = false;

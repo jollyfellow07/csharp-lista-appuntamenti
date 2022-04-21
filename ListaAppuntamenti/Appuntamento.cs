@@ -8,7 +8,7 @@ namespace ListaAppuntamenti
 {
     internal class Appuntamento
     {
-        private string? nome;
+        public string? nome;
         public DateTime dataEOraAttuale = DateTime.Now;
         public DateTime dataEOraAppuntamento;
         public string? localitaAppuntamento;
@@ -69,9 +69,9 @@ namespace ListaAppuntamenti
             string rappresentazioneInStringa = "";
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             rappresentazioneInStringa += "\n**************Appuntamento***************\n";
-            rappresentazioneInStringa += "Il nome della persona con cui l'appuntamento è: " + GetNome() + "\n";
-            rappresentazioneInStringa += "l'appuntamento è fissato per il giorno: " + GetAppuntamento() + "\n";
-            rappresentazioneInStringa += "Il luogo dell'appuntamento è: " + GetLuogo() + "\n";
+            rappresentazioneInStringa += "Nome: " + GetNome() + "\n";
+            rappresentazioneInStringa += "Fissato per il giorno: " + GetAppuntamento() + "\n";
+            rappresentazioneInStringa += "Luogo: " + GetLuogo() + "\n";
             rappresentazioneInStringa += "**************************************" + "\n";
             return rappresentazioneInStringa;
         }
@@ -83,7 +83,7 @@ namespace ListaAppuntamenti
             
             return dataEOraAppuntamento;
         }
-        public string? GetNome()
+        public string GetNome()
         {
             return nome;
         }
