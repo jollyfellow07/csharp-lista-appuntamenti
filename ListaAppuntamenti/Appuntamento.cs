@@ -26,6 +26,7 @@ namespace ListaAppuntamenti
             catch (ArgumentOutOfRangeException e)
             {
                 Console.WriteLine("Mi dispiace ma " + e.ParamName + " ha detto " + e.Message);
+                cambioAppuntamento();
             }
 
         }
