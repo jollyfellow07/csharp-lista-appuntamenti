@@ -30,6 +30,8 @@ if (numeroAppuntamenti > 0)
     {
         Console.WriteLine("Inserisci la data dell'appuntamento: ");
         dataPerAppuntamento = DateTime.Parse(Console.ReadLine());
+        
+           
     } while (dataPerAppuntamento < dataAttuale);
 
 
@@ -48,6 +50,66 @@ foreach(Appuntamento appuntamenti in listaDiAppuntamenti)
 {
     Console.WriteLine(appuntamenti.ToString());
 }
-Appuntamento.ReferenceEquals(listaDiAppuntamenti, new List<Appuntamento>());
+bool condizione = true;
+while (condizione == true)
+{
+    Console.WriteLine("Vuoi modificare l'appuntamento? [si/no]");
+string? risposta = Console.ReadLine();
+
+
+    switch(risposta){
+        case "si":
+            int numeroAppuntamento = 0;
+        
+
+            foreach (Appuntamento appuntamenti in listaDiAppuntamenti)
+            {
+                Console.WriteLine("Appuntamento numero " + numeroAppuntamento++);
+                Console.WriteLine(appuntamenti.ToString());
+            }
+            Console.WriteLine("che appuntamento vuoi modificare?");
+
+            //inserisco eccezione per valore non corretto su console.Readline
+            try
+            {
+
+                numeroAppuntamento = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("mi dispiace hai inserito un input non corretto");
+            }
+
+            //Per evitare che mi crashi il programma dopo l'inserimento di un valore che sia out of range inserisco l'eccezione
+            try
+            {
+                listaDiAppuntamenti[numeroAppuntamento].cambioAppuntamento();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("mi dispiace hai inserito un input non corretto");
+            }
+        
+            Console.Clear();
+            Console.WriteLine("Appuntamento aggiornato.\n Ecco la nuova lista: ");
+            foreach (Appuntamento appuntamenti in listaDiAppuntamenti)
+            {
+                Console.WriteLine(appuntamenti.ToString());
+            }
+
+            condizione = false;
+            break;
+
+        case "no":
+            Console.WriteLine("Buona giornata!");
+            condizione = false;
+            break;
+            //Caso in cui l'utente sbaglia input
+        default:
+            Console.Clear();
+            Console.WriteLine("Scelta non valida.");
+            break;
+    }
+}
 
 

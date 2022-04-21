@@ -46,6 +46,7 @@ namespace ListaAppuntamenti
             do
             {
                 Console.Write("Inserisci la nuova data per l'appuntamento: ");
+
                 DateTime cambioDellAppuntamento = DateTime.Parse(Console.ReadLine());
             
 
