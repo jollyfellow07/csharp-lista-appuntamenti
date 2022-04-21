@@ -29,6 +29,8 @@ namespace ListaAppuntamenti
             }
 
         }
+
+        /********METODI*******/
         public void ComparazioneDelleDate()
         {
             if (dataEOraAppuntamento < dataEOraAttuale)
@@ -36,24 +38,45 @@ namespace ListaAppuntamenti
                 throw new ArgumentOutOfRangeException("dataEOraAppuntamento", "non puo essere una data del passato ");
             }
         }
-     public DateTime cambioAppuntamnto()
+     public DateTime cambioAppuntamento()
         {
-            Console.Write("Inserisci la nuova data per l'appuntamento: ");
-            DateTime cambioDellAppuntamento = DateTime.Parse(Console.ReadLine());
-            this.dataEOraAppuntamento = cambioDellAppuntamento;
-            try
+            do
             {
-                ComparazioneDelleDate();
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                Console.WriteLine("Mi dispiace ma " + e.ParamName + " ha detto " + e.Message);
-            }
+                Console.Write("Inserisci la nuova data per l'appuntamento: ");
+                DateTime cambioDellAppuntamento = DateTime.Parse(Console.ReadLine());
+            
+
+
+                this.dataEOraAppuntamento = cambioDellAppuntamento;
+                try
+                {
+                    ComparazioneDelleDate();
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    Console.WriteLine("Mi dispiace ma " + e.ParamName + " ha detto " + e.Message);
+                }
+
+            } while (dataEOraAppuntamento < dataEOraAttuale);
             return dataEOraAppuntamento;
         }
+        public override string ToString()
+        {
+            string rappresentazioneInStringa = "";
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            rappresentazioneInStringa += "\n**************Appuntamento***************\n";
+            rappresentazioneInStringa += "Il nome dell'appuntamento è: " + GetNome() + "\n";
+            rappresentazioneInStringa += "l'appuntamento è fissato per il giorno: " + GetAppuntamento() + "\n";
+            rappresentazioneInStringa += "Il luogo dell'appuntamento è: " + GetLuogo() + "\n";
+            rappresentazioneInStringa += "**************************************" + "\n";
+            return rappresentazioneInStringa;
+        }
+
+
+        /*GETTER AND SETTER*/
         public DateTime GetAppuntamento()
         {
-            Console.Write("Il tuo appuntamento è fissato per il giorno: ");
+            
             return dataEOraAppuntamento;
         }
         public string GetNome()
@@ -61,6 +84,10 @@ namespace ListaAppuntamenti
             return nome;
         }
         public string GetLocalitaAppuntamento()
+        {
+            return localitaAppuntamento;
+        }
+        public string GetLuogo()
         {
             return localitaAppuntamento;
         }
